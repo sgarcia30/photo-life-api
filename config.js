@@ -6,4 +6,4 @@ exports.DATABASE_URL ||
 exports.PORT = process.env.PORT || 3000;
 exports.JWT_SECRET = process.env.JWT_SECRET || "photo-life";
 exports.JWT_EXPIRY = process.env.JWT_EXPIRY  || "7d";
-exports.CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "https://naughty-heisenberg-f90840.netlify.com/";
+exports.CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:3000";

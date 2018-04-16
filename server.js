@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const { router: imageRouter } = require('./routers/imageRouter.js');
+const { router: authRouter } = require('./routers/authRouter');
+const { router: userRouter } = require('./routers/userRouter');
 
+const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 
@@ -11,17 +14,6 @@ app.use(
         origin: CLIENT_ORIGIN
     })
 );
-
-// CORS
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  if (req.method === 'OPTIONS') {
-    return res.send(204);
-  }
-  next();
-});
 
 app.get('/api/*', (req, res) => {
   res.json({ok: true});

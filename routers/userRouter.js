@@ -1,9 +1,8 @@
 'use strict';
 const express = require('express')
 const bodyParser = require('body-parser')
-// What does this line of code do?
+const router = express.Router();
 router.use(bodyParser.json());
-const router = express.Router()
 
 // user info
 router.get('/:userId', (req, res) => {

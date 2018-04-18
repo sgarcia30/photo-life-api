@@ -1,13 +1,41 @@
 'use strict';
-const express = require('express')
-const bodyParser = require('body-parser')
-// What does this line of code do?
+const express = require('express');
+const bodyParser = require('body-parser');
+const router = express.Router();
 router.use(bodyParser.json());
-const router = express.Router()
+const passport = require('passport');
+const jwtAuth = passport.authenticate('jwt', { session: false });
+router.use(jwtAuth);
+const { User } = require('../models/userModel')
 
+
+// get entries
+router.get('/:userId', (req, res) => {
+  User.findById(req.params.userId)
+  .then(user => {
+    res.json(user.entries)
+  })
+  .catch(err => res.status(500).json({
+    message: 'Internal server error'
+  }));
+})
 // add photos & captions
 router.post('/', (req, res) => {
-  res.json({ok: true});
+  const entry = {
+    photo: '',
+    caption: req.body.caption
+  }
+
+  User.findById(req.body.userId)
+  .then(user => {
+    user.entries.push(entry);
+    user.save(err => {
+      if (err) {
+        res.send(err)
+      }
+      res.json(user);
+    })
+  })
 })
 // delete photos
 router.delete('/:postId', (req, res) => {

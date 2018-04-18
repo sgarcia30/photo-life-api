@@ -1,8 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-const ModelSchema = mongoose.Schema({
+const ContactSchema = mongoose.Schema({
   firstName: {
     type: String,
     default: ''
@@ -19,4 +18,4 @@ const ModelSchema = mongoose.Schema({
 
 const Contact = mongoose.model('Contact', ContactSchema);
 
-module.exports = {Contact};
+module.exports = {Contact, ContactSchema};

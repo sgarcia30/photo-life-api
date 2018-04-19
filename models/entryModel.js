@@ -10,6 +10,9 @@ const EntrySchema = mongoose.Schema({
   caption: {
     type: String,
     default: ''
+  },
+  date: {
+    type: String
   }
 })
 

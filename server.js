@@ -12,7 +12,7 @@ const { PORT, DATABASE_URL } = require('./config');
 const cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 mongoose.connect(DATABASE_URL);
-
+app.use('/public', express.static(__dirname + '/public'));
 app.use(
     cors({
         origin: CLIENT_ORIGIN

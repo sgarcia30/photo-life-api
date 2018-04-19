@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const EntrySchema = mongoose.Schema({
   photo: {
     type: String,
-    default: '',
-    required: true
+    default: ''
   },
   caption: {
     type: String,

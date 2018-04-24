@@ -12,6 +12,9 @@ const EntrySchema = mongoose.Schema({
   },
   date: {
     type: String
+  },
+  editable: {
+    type: Boolean
   }
 })
 

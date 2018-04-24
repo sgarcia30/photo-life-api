@@ -26,21 +26,18 @@ router.get('/:userId', (req, res) => {
   }));
 })
 // add photos & captions
-router.post('/:userId', (req, res) => {
+router.post('/:userId/:caption', (req, res) => {
   // url for my image
   const imgPath = `${DIR_URL}/public/images/${req.files.file.name}`;
-  console.log(imgPath)
-  // console.log(__dirname)
+  const imgClientPath = `/public/images/${req.files.file.name}`;
   const imageFile = req.files.file;
   const entry = {
-    photo: imgPath,
-    caption: '',
-    date: moment()
+    photo: imgClientPath,
+    caption: req.params.caption,
+    date: moment(),
+    editable: false
   }
-
-  // console.log(req.files)
   imageFile.mv(imgPath, (err) => {
-    console.log('is this part working?')
     User.findById(req.params.userId)
     .then(user => {
       user.entries.push(entry);
@@ -52,16 +49,23 @@ router.post('/:userId', (req, res) => {
       message: 'Internal server error'
     }))
   })
-  // .then(() => {
-  //
-  // })
-  // .catch(err => res.status(500).json({
-  //   message: 'Internal server error'
-  // }))
 })
-// delete photos
-router.delete('/:postId', (req, res) => {
-  res.json({ok: true});
+// delete entries
+router.delete('/:userId/:postId', (req, res) => {
+  const postId = req.params.postId;
+  User.findById(req.params.userId)
+  .then(user => {
+    user.entries.id(postId).remove();
+    user.save(err => {
+        if (err) {
+          res.send(err)
+        }
+        res.json(user.entries)
+      })
+  })
+  .catch(err => res.status(500).json({
+    message: 'Internal server error'
+  }))
 })
 // update post
 router.post('/:postId', (req, res) => {

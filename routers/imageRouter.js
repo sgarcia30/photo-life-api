@@ -68,8 +68,17 @@ router.delete('/:userId/:postId', (req, res) => {
   }))
 })
 // update post
-router.post('/:postId', (req, res) => {
-  res.json({ok: true});
+router.put('/:userId/:postId', (req, res) => {
+  const postId = req.params.postId;
+  User.findOneAndUpdate({_id: req.params.userId, 'entries._id': postId},
+  {$set: {'entries.$.caption': req.body.caption}},
+  {new: true})
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch(err => res.status(500).json({
+    message: 'Internal server error'
+  }))
 })
 // Export router
 module.exports = {router};

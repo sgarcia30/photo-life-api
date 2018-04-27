@@ -34,7 +34,7 @@ router.post('/:userId/:caption', (req, res) => {
   const entry = {
     photo: imgClientPath,
     caption: req.params.caption,
-    date: moment().format('ddd MMM DD YYYY'),
+    date: moment(),
     editable: false
   }
   imageFile.mv(imgPath, (err) => {

@@ -7,7 +7,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 const { User } = require('../models/userModel')
 const fileUpload = require('express-fileupload');
 const moment = require('moment');
-const {API_BASE_URL} = require('../config.js');
+// const {API_BASE_URL} = require('../config.js');
 const {DIR_URL} = require('../config.js');
 
 router.use(fileUpload());
@@ -26,14 +26,14 @@ router.get('/:userId', (req, res) => {
   }));
 })
 // add photos & captions
-router.post('/:userId/:caption', (req, res) => {
+router.post('/:userId', (req, res) => {
   // url for my image
   const imgPath = `${DIR_URL}/public/images/${req.files.file.name}`;
   const imgClientPath = `/public/images/${req.files.file.name}`;
   const imageFile = req.files.file;
   const entry = {
     photo: imgClientPath,
-    caption: req.params.caption,
+    caption: req.body.caption,
     date: moment(),
     editable: false
   }

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const {ContactSchema} = require('./contactModel.js');
 const {EntrySchema} = require('./entryModel.js');
 
+// Sets up the UserSchema
 const UserSchema = mongoose.Schema({
   username: {
     type: 'String',
@@ -26,6 +27,7 @@ const UserSchema = mongoose.Schema({
   contacts: [ContactSchema]
 })
 
+// Serializes the user info to protect sensitive info
 UserSchema.methods.serialize = function() {
   return {
     username: this.username || '',
@@ -44,6 +46,8 @@ UserSchema.statics.hashPassword = function(password) {
 	return bcrypt.hash(password, 10);
 };
 
+// Creates the name and setup for the user model
 const User = mongoose.model('User', UserSchema);
 
+// Export the User model
 module.exports = {User};

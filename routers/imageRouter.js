@@ -7,15 +7,14 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 const { User } = require('../models/userModel')
 const fileUpload = require('express-fileupload');
 const moment = require('moment');
-// const {API_BASE_URL} = require('../config.js');
 const {DIR_URL} = require('../config.js');
-
+// Tell the router to use 'fileUpload', the 'jwtAuth', and 'bodyParser'
 router.use(fileUpload());
 router.use(jwtAuth);
 router.use(bodyParser.json());
 
 
-// get entries
+// GET the user's entries
 router.get('/:userId', (req, res) => {
   User.findById(req.params.userId)
   .then(user => {
@@ -25,7 +24,8 @@ router.get('/:userId', (req, res) => {
     message: 'Internal server error'
   }));
 })
-// add photos & captions
+
+// POST photos & captions
 router.post('/:userId', (req, res) => {
   // url for my image
   const imgPath = `${DIR_URL}/public/images/${req.files.file.name}`;
@@ -50,7 +50,8 @@ router.post('/:userId', (req, res) => {
     }))
   })
 })
-// delete entries
+
+// DELETE an entry
 router.delete('/:userId/:postId', (req, res) => {
   const postId = req.params.postId;
   User.findById(req.params.userId)
@@ -67,7 +68,8 @@ router.delete('/:userId/:postId', (req, res) => {
     message: 'Internal server error'
   }))
 })
-// update post
+
+// PUT endpoint that updates an entry caption
 router.put('/:userId/:postId', (req, res) => {
   const postId = req.params.postId;
   User.findById(req.params.userId)

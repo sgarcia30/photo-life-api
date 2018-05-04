@@ -14,7 +14,7 @@ router.get('/:userId/contacts', (req, res) => {
   res.json({ok: true});
 })
 
-router.post('/:userId/conacts', (req, res) => {
+router.post('/:userId/contacts', (req, res) => {
   res.json({ok: true});
 })
 

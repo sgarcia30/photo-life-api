@@ -1,9 +1,13 @@
- #PhotoLife
+ #PhotoLife - Backend
  Thinkful (https://www.thinkful.com/) third portfolio project - a responsive app to photo journal your life.
  
--![Screenshots](https://github.com/sgarcia30/api-capstone/blob/master/app_screenshots/build%20list%20page.PNG)
-+![Screenshots](https://github.com/sgarcia30/api-capstone/blob/master/app_screenshots/calendar%20page.PNG)
-
+-![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_homePageFeed.PNG)
++![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_landingPage1.PNG)
+-![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_landingPage2.PNG)
++![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_landingPage3.PNG)
+-![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_loginPage.PNG)
++![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_navBarHomePage.PNG)
+-![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_postModal.PNG)
  
  #Introduction
 The PhotoLife app is allows you to journal your life in digitally, in photos. 
@@ -15,4 +19,4 @@ Categorize your journal entries:
 Each photo entry can be captioned for searchability. PhotoLife allows users to search and view their entries by caption.
  
  #Technology Used
-This app was created using HTML, CSS, JavaScript, React, Node, and several plug-ins/libraries.
+This app was created using JavaScript, Node, and several plug-ins/libraries.

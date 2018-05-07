@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 
 const { router: imageRouter } = require('./routers/imageRouter.js');
 const { router: authRouter } = require('./routers/authRouter.js');
-const { router: userRouter } = require('./routers/userRouter.js');
 const { localStrategy, jwtStrategy } = require('./authStrategies');
 
 const { PORT, DATABASE_URL } = require('./config');
@@ -26,7 +25,6 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 // Setup routers
-app.use('/api/users/', userRouter);
 app.use('/api/auth/', authRouter);
 app.use('/api/entries/', imageRouter);
 

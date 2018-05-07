@@ -39,7 +39,6 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 router.post('/register', (req, res) => {
 
 	let {username, password, firstName, lastName} = req.body;
-	console.log(username);
 
 	firstName = firstName.trim();
 	lastName = lastName.trim();
@@ -60,7 +59,6 @@ router.post('/register', (req, res) => {
 			return User.hashPassword(password);
 		})
 		.then(hash => {
-			console.log(hash);
 			return User.create({
 				username,
 				password: hash,

@@ -1,7 +1,6 @@
 'use strict';
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const {ContactSchema} = require('./contactModel.js');
 const {EntrySchema} = require('./entryModel.js');
 
 // Sets up the UserSchema
@@ -23,8 +22,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     default: ''
   },
-  entries: [EntrySchema],
-  contacts: [ContactSchema]
+  entries: [EntrySchema]
 })
 
 // Serializes the user info to protect sensitive info

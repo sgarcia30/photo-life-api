@@ -10,7 +10,7 @@
 -![Screenshots](https://github.com/sgarcia30/photo-life-api/blob/master/app_screenshots/photoLife_postModal.PNG)
  
  #Introduction
-The PhotoLife app is allows you to journal your life in digitally, in photos. 
+The PhotoLife app is allows you to journal your life digitally, in photos. 
 
 Capture your life in photos:
 PhotoLife allows users to journal life through photos. Users can make entries daily, weekly, or as often as you like.

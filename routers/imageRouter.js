@@ -13,7 +13,6 @@ router.use(fileUpload());
 router.use(jwtAuth);
 router.use(bodyParser.json());
 
-
 // GET the user's entries
 router.get('/:userId', (req, res) => {
   User.findById(req.params.userId)
@@ -27,18 +26,13 @@ router.get('/:userId', (req, res) => {
 
 // POST photos & captions
 router.post('/:userId', (req, res) => {
-  // url for my image
-  const imgPath = `${DIR_URL}/public/images/${req.files.file.name}`;
-  const imgClientPath = `/public/images/${req.files.file.name}`;
-  const imageFile = req.files.file;
   const entry = {
-    photo: imgClientPath,
+    photo: req.body.file,
     caption: req.body.caption,
     date: moment(),
     editable: false
   }
-  imageFile.mv(imgPath, (err) => {
-    User.findById(req.params.userId)
+  User.findById(req.params.userId)
     .then(user => {
       user.entries.push(entry);
       user.save(err => {
@@ -48,7 +42,6 @@ router.post('/:userId', (req, res) => {
     .catch(err => res.status(500).json({
       message: 'Internal server error'
     }))
-  })
 })
 
 // DELETE an entry

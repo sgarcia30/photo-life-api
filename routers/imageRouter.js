@@ -7,7 +7,6 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 const { User } = require('../models/userModel')
 const fileUpload = require('express-fileupload');
 const moment = require('moment');
-const {DIR_URL} = require('../config.js');
 // Tell the router to use 'fileUpload', the 'jwtAuth', and 'bodyParser'
 router.use(fileUpload());
 router.use(jwtAuth);
